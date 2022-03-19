@@ -32,4 +32,28 @@
 // Increment one of two variables playerScore and computerScore.
 
 // Use console.log to display round results and winner at the end. If...else
-// statement to display who wins based on score.
+// statement to display who wins based on score. //
+
+let playerScore = 0
+let computerScore = 0
+let wePlay = prompt("Would you like to play/?");
+
+let choices = ["rock", "paper", "scissors"]
+let computerSelection = choices[Math.floor(Math.random() * choices.length)];
+
+let playerSelection = prompt("Please choose Rock, Paper, or Scissors")
+
+function playRound (playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) {
+        console.log("It's a tie.")
+    } else if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock")) {
+        computerScore++;
+    } else ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "paper")); {
+        playerScore++;
+    } 
+}
+
+console.log(playerScore)
+console.log(computerScore)
+console.log(playerSelection)
+console.log(computerSelection)
