@@ -27,33 +27,64 @@
 // using if..else if..else or switch statements.
 
 // Function game() will call playRound() 5 times using a for loop and keep count of how many times
-// the playerSelection and computerSelection variables win (are true)and returns
+// the playerSelection and computerSelection variables win (are true) and returns
 // a winner at the end of 5 loops.
 // Increment one of two variables playerScore and computerScore.
 
 // Use console.log to display round results and winner at the end. If...else
 // statement to display who wins based on score. //
 
-let playerScore = 0
-let computerScore = 0
-let wePlay = prompt("Would you like to play/?");
 
-let choices = ["rock", "paper", "scissors"]
-let computerSelection = choices[Math.floor(Math.random() * choices.length)];
+// Initializing the scores for the player and the computer
+let playerScore = 0;
+let computerScore = 0;
 
-let playerSelection = prompt("Please choose Rock, Paper, or Scissors")
 
-function playRound (playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        console.log("It's a tie.")
-    } else if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock")) {
-        computerScore++;
-    } else ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "paper")); {
-        playerScore++;
-    } 
+// Function to randomize the computer's selection
+function computerPlay() {
+    let choices = ["rock", "paper", "scissors"];
+    let choice = choices[Math.floor(Math.random() * choices.length)];
+    return choice;
 }
 
-console.log(playerScore)
-console.log(computerScore)
-console.log(playerSelection)
-console.log(computerSelection)
+
+// Function to play 1 round of the game
+function playRound () {
+    let playerChoice = prompt("Please choose Rock, Paper, or Scissors");
+    let playerSelection = playerChoice.toLowerCase();
+    let computerSelection = computerPlay()
+    if (playerSelection === computerSelection) {
+        console.log("It's a tie.");
+        } else if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock")) {
+            computerScore++;
+            console.log("You lose this round.");
+        } else if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "paper")) {
+            playerScore++;
+            console.log("You win this one!");
+        } else if (playerSelection === null) {
+            return "Error";
+        }
+}
+
+// Function to play 5 rounds of the game
+function game() {
+    for (let i = 0; i < 5; i++) {
+    playRound()
+    }
+}
+
+// Function to tell player who won and who lost
+function winnerAlert() {
+    if (playerScore > computerScore) {
+        console.log(`You win the game! Your score was ${playerScore}. The computer's score was ${computerScore}.`);
+    } else if (playerScore === computerScore) {
+        console.log(`You tied the computer! Your score was ${playerScore}. The computer's score was ${computerScore}.`)
+    } else {
+        console.log(`You have lost. Your score was ${playerScore}. The computer's score was ${computerScore}.`);
+    }
+}
+
+// Calling the main functions
+game();
+
+winnerAlert();
