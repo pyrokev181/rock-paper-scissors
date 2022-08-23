@@ -49,9 +49,9 @@ function computerPlay() {
 
 
 // Function to play 1 round of the game
-function playRound () {
-    let playerChoice = prompt("Please choose Rock, Paper, or Scissors");
-    let playerSelection = playerChoice.toLowerCase();
+//function playRound () {
+  //  let playerChoice = prompt("Please choose Rock, Paper, or Scissors");
+  //  let playerSelection = playerChoice.toLowerCase();
     let computerSelection = computerPlay()
     if (playerSelection === computerSelection) {
         console.log("It's a tie.");
@@ -66,12 +66,12 @@ function playRound () {
         }
 }
 
-// Function to play 5 rounds of the game
-function game() {
-    for (let i = 0; i < 5; i++) {
-    playRound()
-    }
-}
+// Function to play 5 rounds of the game (removed for UI version)
+// function game() {
+ //   for (let i = 0; i < 5; i++) {
+ //   playRound()
+ //   }
+// }
 
 // Function to tell player who won and who lost
 function winnerAlert() {
@@ -88,3 +88,7 @@ function winnerAlert() {
 game();
 
 winnerAlert();
+
+// Event listener for playerSelection buttons
+
+btn.addEventListener ('click', playerSelection)
